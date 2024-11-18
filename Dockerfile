@@ -21,6 +21,8 @@ RUN chmod 777  mvnw
 # quero gerar o war é o maven, executar:
 RUN ./mvnw package
 
+RUN ls -l ./target
+
 # cmd executar o java (arquivo war) na pasta target do projeto sitedb: target/sitebd.war
-CMD ["java","-jar","target/sitebd.war"]
+CMD ["java","-jar","target/sitebd-0.0.1-SNAPSHOT.war"]
 
