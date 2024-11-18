@@ -1,0 +1,24 @@
+
+server:
+    port: 8080
+
+spring:
+    datasource:
+        url: jdbc:postgresql://cstju0dumphs73fpsd2g-a.oregon-postgres.render.com:5432/banco_kusb
+        username: banco_kusb_user
+        # colocar no git ignore para niguem ver a senha, não expor a senha ou colocar variáveis de ambiente
+        # ou repositório privado
+        password: HuSj3SWgBFZS3GsxNbC2iXB6cdVeaxmZ
+        driver-class-name: org.postgresql.Driver
+        initialize: true
+
+    jpa: 
+        hibernate:
+            ddl-auto: create-drop
+            generate-ddl: true
+
+    sql:
+        init:
+            schema-locations: classpath:/schema-postgresql.sql
+            mode: always
+            platform: postgres

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATUALIZAR CADASTRO</title>
+</head>
+
+<body>
+    <h1>ATUALIZAR CLIENTES</h1>
+
+    <form th:action="@{'/atualizar/' + ${id} }" method="post" th:object="${cliente}">
+        Nome: <input type="text" th:field="*{nome}"> <br>
+        CPF: <input type="text" th:field="*{cpf}">
+        <input type="submit" value="Atualizar" name="atualizar">
+    </form>
+
+    
+    <ul>
+        <li><a th:href="@{/cadastro}">Cadastrar Clientes</a></li>  
+        <li><a th:href="@{/listagem}">Listar Clientes</a></li> 
+        <li><a th:href="@{/}">Home</a></li>  
+    </ul>
+
+</body>
+</html>

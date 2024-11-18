@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Clientes</title>
+
+    <style>
+
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            background: none; /* Remove o fundo do botão */
+            border: none; /* Remove a borda do botão */
+            padding: 0; /* Remove o padding do botão */
+            cursor: pointer; /* Mantém o cursor como ponteiro para indicar que é clicável */
+            
+        }
+
+        img{
+            width: 20px;
+        }
+
+        table{
+            border: 3px solid black;
+        }
+
+        tbody td{
+            padding: 0 5px 0 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <h1>LISTAGEM DE CLIENTES</h1>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th>CPF</th>
+                </tr>
+            </thead>
+
+            <!-- Obs.: depois do model e da view o que conecta os 02 á o arquivo controller.java -->
+            <tbody>
+
+                <!-- função each do timelift -->
+                 <!-- a cada cliente a variável "clientes"-->
+                 <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.id}"></td>
+                    <td th:text="${cliente.nome}"></td>
+                    <td th:text="${cliente.cpf}"></td>
+                    <td><a th:href="@{'/atualizar/' + ${cliente.id} }"><img th:src="@{imgs/edit-32.ico}" alt="Ícone para Editar o Cadastro"></a></td>
+                   
+
+                    <!-- <td><a th:href="@{'/deletar/' + ${cliente.id} }" th:data-nome="${cliente.nome}" onclick="return confirm('Deseja realmente editar o registro do usuário: ' + this.dataset.nome + '?');">Deletar</a></td> -->
+
+                    <td>
+                        <form th:action="@{'/deletar/' + ${cliente.id} }" method="post" th:object="${cliente}">
+                            <button type="submit" th:data-nome="${cliente.nome}" onclick="return confirm('Deseja realmente editar o registro do usuário: ' + this.dataset.nome + '?');"><img th:src="@{imgs/trash-32.ico}" alt="Ícone para Deletar o Cadastro"></button>
+                        
+                        </form>
+                    </td>
+
+                    
+                </tr>
+            </tbody>
+
+        </table>
+
+        <ul>
+            <li><a th:href="@{/cadastro}">Cadastrar Clientes</a></li>  
+            <li><a th:href="@{/listagem}">Listar Clientes</a></li> 
+            <li><a th:href="@{/}">Home</a></li>  
+      </ul>
+</body>
+
+</html>

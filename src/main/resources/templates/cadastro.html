@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADASTRO DE CLIENTES</title>
+    <!-- <link rel="stylesheet" th:href="@{css/index.css}"> -->
+    <!-- o @ do link do css com th:href"@{....}" é o interpolador busca o arquivo css sem especificar o caminho inteiro -->
+    <!-- <script th:src="@{js/index.js}"></script> -->
+    
+    <!-- @ -> interpolador de links -->
+
+</head>
+
+<body>
+    <h1>CADASTRAR CLIENTES</h1>
+
+    <form th:action="@{/cadastro}" method="post" th:object="${cliente}">
+        Nome: <input type="text" th:field="*{nome}"> <br>
+        CPF: <input type="text" th:field="*{cpf}">
+        <input type="submit" value="Cadastrar" name="Cadastrar">
+    </form>
+
+    
+    <ul>
+        <li><a th:href="@{/cadastro}">Cadastrar Clientes</a></li>  
+        <li><a th:href="@{/listagem}">Listar Clientes</a></li> 
+        <li><a th:href="@{/}">Home</a></li>  
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DELETAR CLIENTE</title>
+</head>
+
+<body>
+    <img th:src="@{imgs/025.png}" alt="Imagem do Pikachu">
+    <h1 th:text=" 'Deseja realmente apagar o cadastro de nome: ' + ${cliente.nome}"></h1>
+    
+
+    <form th:action="@{'/deletar/' + ${id} }" method="post" th:object="${cliente}">
+        <!-- <input type="submit" value="Sim" name="deletar"> -->
+        <button type="submit"><img th:src="@{imgs/trash-32.ico}" alt="Ícone para Deletar"></button>
+        
+    </form>
+
+    
+    <ul>
+        <li><a th:href="@{/cadastro}">Cadastrar Clientes</a></li>  
+        <li><a th:href="@{/listagem}">Listar Clientes</a></li> 
+        <li><a th:href="@{/}">Home</a></li>  
+    </ul>
+
+</body>
+</html>
